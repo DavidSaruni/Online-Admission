@@ -7,6 +7,9 @@ def index(response, id):
     item = adm.item_set.get(id=1)
     return HttpResponse("<h1>Student admissions working for %s</h1><br><p>%s</p>" %(adm.name, str(item.text)))
 
+def home(response):
+    return render(response, "main/home.html", {})
+
 def admissions(request):
     return render(request, "main/main.html", {})
 

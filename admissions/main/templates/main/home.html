@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Online Admission</title>
+</head>
+<body>
+    {% include 'main/navbar.html' %}
+    
+    <div class="row justify-content-center">
+        <div class="col-8">
+            {% if user.is_authenticated %}
+                {% block content %}
+                    <h1 class="mt-2">Welcome!!</h1>
+                    <hr class="mt-0 mb-4">
+                    <h1>Home for Online Admission</h1>
+                    <h4>Continue to Online Admission <a href="/admissions">here</a></h4>
+                {% endblock %}
+            {% else %}
+                <h4>Please login <a href="/login" class="text-danger">here</a> to continue</h4>
+            {% endif %}
+        </div>
+    </div>           
+        
+</body>
+</html>
+
+    

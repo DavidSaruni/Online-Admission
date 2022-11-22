@@ -1,18 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<meta charset="utf-8">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<title>Login</title>
-  <h1>HAPPY VALLEY INTERNATIONAL UNIVERSITY</h1>
-	<style type="text/css">
-		@import url('https://fonts.googleapis.com/css?family=Poppins');
+  {% include 'main/navbar.html' %}
+  {% load crispy_forms_tags %}
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Register</title>
+  <style type="text/css">
+    @import url('https://fonts.googleapis.com/css?family=Poppins');
 
 /* BASIC */
 
 html {
-  background-image: url("bgimage.jpg");
-  background-color: #820052;
+    background-image: url("bgimage.jpg");
+  background-color: #56baed;
 }
 
 body {
@@ -147,7 +148,7 @@ input[type=text] {
 }
 
 input[type=text]:focus {
-  background-color: #ff0000;
+  background-color: #fff;
   border-bottom: 2px solid #5fbae9;
 }
 
@@ -246,7 +247,7 @@ input[type=text]:placeholder {
   bottom: -10px;
   width: 0;
   height: 2px;
-  background-color: #ff0000;
+  background-color: #56baed;
   content: "";
   transition: width 0.2s;
 }
@@ -274,13 +275,13 @@ input[type=text]:placeholder {
 * {
   box-sizing: border-box;
 }
-	</style>
+  </style>
 </head>
 <body>
-	<div class="wrapper fadeInDown">
+  <div class="wrapper fadeInDown">
   <div id="formContent">
     <!-- Tabs Titles -->
-    <h2 class="active"> Sign In </h2>
+    <a href="signin.html"><h2 class="active"> Sign In </h2></a>
     <a href="signup.html"><h2 class="inactive underlineHover">Sign Up </h2></a>
 
     <!-- Icon -->
@@ -289,16 +290,14 @@ input[type=text]:placeholder {
     </div>
 
     <!-- Login Form -->
-    <form>
-      <input type="text" id="login" class="fadeIn second" name="login" placeholder="email">
-      <input type="text" id="password" class="fadeIn third" name="login" placeholder="password">
-      <input type="submit" class="fadeIn fourth" value="Log In">
+    <form method="post" class="form-control">
+      {% csrf_token %}
+      {{form|crispy}}
+      <input type="submit" class="fadeIn fourth" value="Register">
     </form>
 
     <!-- Remind Passowrd -->
-    <div id="formFooter">
-      <a class="underlineHover" href="#">Forgot Password?</a>
-    </div>
+  
 
   </div>
 </div>
