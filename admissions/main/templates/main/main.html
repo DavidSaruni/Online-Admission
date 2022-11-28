@@ -269,9 +269,10 @@
             <div class="card px-0 pt-4 pb-0 mt-3 mb-3">
                 <h2><strong>Online Admission</strong></h2>
                 <p>Please fill up all required fields and upload the required documents</p>
-                <div class="row">
+                <div class="row">				
                     <div class="col-md-12 mx-0">
-                        <form id="msform">
+                        <form id="msform" action="{% url 'admissions_save' %}" method="post">
+							{% csrf_token %}
                             <!-- progressbar -->
                             <ul id="progressbar">
                                 <li class="active" id="account"><strong>Personal Information</strong></li>
@@ -285,28 +286,28 @@
                                     <h2 class="fs-title">Applicant's Details</h2>
                                     <div class="row">
                                     	<div class="col-md-6">
-	                                    	<input type="text" name="fname" placeholder="Full Name"/>
+	                                    	<input type="text" name="name" placeholder="Full Name"/>
 	                                    </div>
                                     	<div class="col-md-6">
-	                                    	<input type="email" name="telnumber" placeholder="Telephone number"/>
+	                                    	<input type="phone" name="phone" placeholder="Telephone number"/>
 	                                    </div>
 	                                <div class="col-md-6">
 	                                    	<input type="email" name="email" placeholder="Email Address"/>
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Religion</label>
-	                                    	<select name="religion">
-	                                    		<option>Christian</option>
-	                                    		<option>Islam</option>
-	                                    		<option>Other</option>
+	                                    	<select name="religion" type="text">
+	                                    		<option value="Christian">Christian</option>
+	                                    		<option value="Islam">Islam</option>
+	                                    		<option value="Other">Other</option>
 	                                    	</select>
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Gender</label>
-	                                    	<select name="gender">
-	                                    		<option>Male</option>
-	                                    		<option>Female</option>
-	                                    		<option>Other</option>
+	                                    	<select name="gender" type="text">
+	                                    		<option value="Male">Male</option>
+	                                    		<option value="Female">Female</option>
+	                                    		<option value="Other">Other</option>
 	                                    	</select>
 	                                    </div>
 	                                    <div class="col-md-6">
@@ -315,21 +316,19 @@
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Marital Status</label>
-	                                    	<select name="gender">
-	                                    		<option>Single</option>
-	                                    		<option>Married</option>
-	                                    		<option>Other</option>
+	                                    	<select name="status" type="text">
+	                                    		<option value="Single">Single</option>
+	                                    		<option value="Married">Married</option>
+	                                    		<option value="Other">Other</option>
 	                                    	</select>
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Nationality</label>
-	                                    	<select>
-	                                    		<option>Kenyan</option>
-	                                    		<option>Tanzanian</option>
-	                                    		<option>Ugandan</option>
-	                                    		<option> American</option>
-	                                    		<option>Algerian</option>
-	                                    		<option> Cameroonian</option>
+	                                    	<select name="nationality" type="text">
+	                                    		<option value="Kenyan">Kenyan</option>
+	                                    		<option value="Tanzanian">Tanzanian</option>
+	                                    		<option value="Ugandan">Ugandan</option>
+	                                    		<option value="American"> American</option>
 	                                    	</select>
 	                                    </div>
 	                                      <div class="col-md-6">
@@ -344,16 +343,16 @@
                                     <h2 class="fs-title">Parents Contact</h2>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="email" name="email" placeholder="Fathers Name"/>
-                                            <input type="Mobile No." name="mobile no." placeholder="Mobile No."/>
-                                            <input type="email" name="email" placeholder="Email"/>
-                                            <input type="text" name="text" placeholder="Occupation"/>
+                                            <input type="text" name="fname" placeholder="Fathers Name"/>
+                                            <input type="phone" name="fphone" placeholder="Mobile No."/>
+                                            <input type="email" name="femail" placeholder="Email"/>
+                                            <input type="text" name="foccupation" placeholder="Occupation"/>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" name="uname" placeholder="Mothers Name"/>
-                                            <input type="Mobile No." name="Mobile No." placeholder="Mobile No."/>
-                                            <input type="email" name="Em0ail" placeholder="Email"/>
-                                            <input type="text" name="Text" placeholder="Occupation"/>
+                                            <input type="text" name="mname" placeholder="Mothers Name"/>
+                                            <input type="phone" name="mphone" placeholder="Mobile No."/>
+                                            <input type="email" name="memail" placeholder="Email"/>
+                                            <input type="text" name="moccupation" placeholder="Occupation"/>
                                         </div>
 
                                     </div>
@@ -364,29 +363,26 @@
                                     <h2 class="fs-title">Educational Details</h2>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            Course Registered <select>
-                                            <option value>BBIT</option>
-                                            <option value>Computer science</option>
-                                            <option value>Education</option>
-                                            <option value>Procurement</option>
-                                            <option value>Nursing</option>
-                                            <option value>Hospitality</option>
-                                            <option value>Nutrition</option>
-                                            <option value>Tourism</option>
+                                            Course Registered <select name="course" type="text">
+                                            <option value="BBIT">BBIT</option>
+                                            <option value="Computer science">Computer science</option>
+                                            <option value="Education">Education</option>
+                                            <option value="Procurement">Procurement</option>
+                                            <option value="Nursing">Nursing</option>
+                                            <option value="Hospitality">Hospitality</option>
+                                            <option value="Nutrition">Nutrition</option>
+                                            <option value="Tourism">Tourism</option>
                                             </select><br><br>
-                                            Date of Admission<input type="date" name="Date" placeholder=""/>
-                                            <input type="text" name="" placeholder="Previous School"/>
-                                            <input type="email" name="email" placeholder="School Email"/>
+                                            Date of Admission<input type="date" name="admdate" placeholder=""/>
+                                            <input type="text" name="schoolname" placeholder="Sec. School Name"/>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" name="uname" placeholder="KCSE"/>
-                                            <input type="Mobile No." name="Mobile No." placeholder="Mobile No."/>
-                                            <input type="email" name="Email" placeholder="Email"/>
-                                            <input type="text" name="Text" placeholder="Occupation"/>
+                                            <input type="text" name="grade" placeholder="KCSE Grade"/> 
+											<input type="text" name="refno" placeholder="REF Number"/> 
                                         </div>
                                     </div> 
                                 </div>
-                                <input type="button" name="next" class="next action-button" value="Next Step"/>
+                                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
                             </fieldset>
                             <fieldset>
                             	<p style="color: red;">Please upload all the required documents in this section</p>
@@ -472,14 +468,14 @@
                                     </div>
                                 </div>
                                 <input type="button" name="previous" class="previous action-button-previous" value="Previous"/>
-                                <input type="button" name="make_payment" class="next action-button" value="Confirm"/>
+                                <input type="submit" name="submit" class="submit action-button" value="Submit"/>
                             </fieldset>
                             <fieldset>
                                 <div class="form-card">
                                     <h2 class="fs-title text-center">Success !</h2>
                                     <br><br>
                                     <div class="row justify-content-center">
-                                        <div class="col-3">
+                                        <div class="col-3"> 
                                             <img src="https://img.icons8.com/color/96/000000/ok--v2.png" class="fit-image">
                                         </div>
                                     </div>
@@ -492,11 +488,28 @@
                                 </div>
                             </fieldset>
                         </form>
+						
                     </div>
                 </div>
+				
             </div>
         </div>
     </div>
+</div>
+<div class="row">
+	<div class="col-lg-12">
+		<div class="form-group">
+			{% if messages %}
+				{% for message in messages %}
+					{% if message.tags == 'success' %}
+						<div class="alert alert-success">{{ message }}</div>
+					{% elif message.tag == 'error' %}
+						<div class="alert alert-danger">{{ message }}</div>
+					{% endif %}
+				{% endfor %}
+			{% endif %}
+		</div>
+	</div>
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
@@ -565,12 +578,7 @@
     $('.radio-group .radio').click(function(){
         $(this).parent().find('.radio').removeClass('selected');
         $(this).addClass('selected');
-    });
-
-    $(".submit").click(function(){
-        return false;
-    })
-        
+    });   
     });
 </script>
 {% endblock %}
