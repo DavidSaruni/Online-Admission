@@ -304,13 +304,13 @@
                                     <h2 class="fs-title">Applicant's Details</h2>
                                     <div class="row">
                                     	<div class="col-md-6">
-	                                    	<input type="text" name="name" placeholder="Full Name"/>
+	                                    	<input type="text" name="name" placeholder="Full Name" required/>
 	                                    </div>
                                     	<div class="col-md-6">
-	                                    	<input type="phone" name="phone" placeholder="Telephone number"/>
+	                                    	<input type="phone" name="phone" placeholder="Telephone number" required/>
 	                                    </div>
 	                                <div class="col-md-6">
-	                                    	<input type="email" name="email" placeholder="Email Address"/>
+	                                    	<input type="email" name="email" placeholder="Email Address" required/>
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Religion</label>
@@ -330,7 +330,7 @@
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Date of Birth</label>
-	                                    	<input type="date" name="dob" placeholder=""/>
+	                                    	<input type="date" name="dob" placeholder="" required/>
 	                                    </div>
 	                                    <div class="col-md-6">
 	                                    	<label>Marital Status</label>
@@ -350,7 +350,7 @@
 	                                    	</select>
 	                                    </div>
 	                                      <div class="col-md-6">
-	                                    	<input type="text" name="county" placeholder="County"/>
+	                                    	<input type="text" name="county" placeholder="County" required/>
 	                                    	
 	                                    </div>
 	                                </div>
@@ -361,16 +361,16 @@
                                     <h2 class="fs-title">Parents Contact</h2>
                                     <div class="row">
                                         <div class="col-md-6">
-                                            <input type="text" name="fname" placeholder="Fathers Name"/>
-                                            <input type="phone" name="fphone" placeholder="Mobile No."/>
-                                            <input type="email" name="femail" placeholder="Email"/>
-                                            <input type="text" name="foccupation" placeholder="Occupation"/>
+                                            <input type="text" name="fname" placeholder="Fathers Name" required/>
+                                            <input type="phone" name="fphone" placeholder="Mobile No." required/>
+                                            <input type="email" name="femail" placeholder="Email" required/>
+                                            <input type="text" name="foccupation" placeholder="Occupation" required/>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" name="mname" placeholder="Mothers Name"/>
-                                            <input type="phone" name="mphone" placeholder="Mobile No."/>
-                                            <input type="email" name="memail" placeholder="Email"/>
-                                            <input type="text" name="moccupation" placeholder="Occupation"/>
+                                            <input type="text" name="mname" placeholder="Mothers Name" required/>
+                                            <input type="phone" name="mphone" placeholder="Mobile No." required/>
+                                            <input type="email" name="memail" placeholder="Email" required/>
+                                            <input type="text" name="moccupation" placeholder="Occupation" required/>
                                         </div>
 
                                     </div>
@@ -392,11 +392,11 @@
                                             <option value="Tourism">Tourism</option>
                                             </select><br><br>
                                             Date of Admission<input type="date" name="admdate" placeholder=""/>
-                                            <input type="text" name="schoolname" placeholder="Sec. School Name"/>
+                                            <input type="text" name="schoolname" placeholder="Sec. School Name" required/>
                                         </div>
                                         <div class="col-md-6">
-                                            <input type="text" name="grade" placeholder="KCSE Grade"/> 
-											<input type="text" name="refno" placeholder="REF Number"/> 
+                                            <input type="text" name="grade" placeholder="KCSE Grade" required/> 
+											<input type="text" name="refno" placeholder="REF Number" required/> 
                                         </div>
                                     </div> 
                                 </div>
@@ -448,15 +448,15 @@
                                         <br>
                                     </div>
                                     <label class="pay">Card Holder Name*</label>
-                                    <input type="text" name="holdername" placeholder=""/>
+                                    <input type="text" name="holdername" placeholder="" required/>
                                     <div class="row">
                                         <div class="col-9">
                                             <label class="pay">Card Number*</label>
-                                            <input type="text" name="cardno" placeholder=""/>
+                                            <input type="text" name="cardno" placeholder="" required/>
                                         </div>
                                         <div class="col-3">
                                             <label class="pay">CVC*</label>
-                                            <input type="password" name="cvcpwd" placeholder="***"/>
+                                            <input type="password" name="cvcpwd" placeholder="***" required/>
                                         </div>
                                     </div>
                                     <div class="row">

@@ -1,18 +1,33 @@
+#imports rules
+# - python first 
+# - django second
+# - your apps
+# - local directory
+from django.conf import settings
+from django.contrib import messages
+from django.contrib.auth.decorators import login_required, permission_required
+from django.core.mail import send_mail
 from django.shortcuts import render, redirect
 from django.http import HttpResponse, HttpResponseRedirect
 from django.urls import reverse
 from .models import UserList, Item, Admissions
-from django.contrib import messages
 from .forms import AdmissionForm
+from django.template.loader import render_to_string
+
+
+
+
+
 # Create your views here.
 def index(response, id):
     adm = UserList.objects.get(id=id)
     item = adm.item_set.get(id=1)
     return HttpResponse("<h1>Student admissions working for %s</h1><br><p>%s</p>" %(adm.name, str(item.text)))
-
+@login_required(login_url='login')
 def home(response):
     return render(response, "main/home.html", {})
 
+@login_required(login_url='login')
 def admissions(request):
     return render(request, "main/main.html")
 
@@ -29,7 +44,7 @@ def admissions(request):
     # else:
     #     admission = admissions()
     #     messages.error(request, "Invalid Details")
-    #     return render(request, "main/main.html", {"admission":admission})
+   #     return render(request, "main/main.html", {"admission":admission}
 def admissions_save(request):
     
     if request.method =="GET":
@@ -71,6 +86,14 @@ def admissions_save(request):
             admissions.expmonth=form.cleaned_data.get("expmonth")
             admissions.expyear=form.cleaned_data.get("expyear")
             admissions.save()
+            #send_mai(subject, message, from_email, to_list, fail_silently=True)
+
+            template = render_to_string('main/email_template.html', {'name':admissions.name})
+            subject = 'Admission Confirmation'
+            message = 'Hello, we have recieved your details, thank you for taking your time to fill in! You will recieve an email for further instructions.'
+            from_email = settings.EMAIL_HOST_USER
+            to_list = [admissions.email, settings.EMAIL_HOST_USER]
+            send_mail(subject,template,from_email,to_list,fail_silently=False)
             messages.success(request,"Data Saved Successfully")
             return HttpResponseRedirect(reverse("admissions"))
         else:
